@@ -1,0 +1,68 @@
+{% extends 'admin/index.html.twig' %}
+{% block title %}Liste des utilisateurs{% endblock %}
+{% block body%}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col px-3">
+                <div class="d-flex flex-row">
+                    {{ form_start(formU) }}
+
+
+                    {{ form_row(formU.email) }}
+
+                    <button type="submit" class="btn btn-success my-3">Rechercher</button>
+                    {{ form_end(formU) }}
+
+                </div>
+                <td>
+                    <a class="btn btn-success" href=" {{ path('ListQB') }}"> Trie Par Age </a>
+                </td>
+                <h1 class="my-3 text-success">Liste des Utilisateurs</h1>
+                <table  class="table table-hover table-responsive table-borderless">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">CinUser</th>
+                    <th scope="col">AgeUser</th>
+                    <th scope="col">N° Tél</th>
+                    <th scope="col">Sexe</th>
+                    <th scope="col">Abonnement</th>
+                    <th scope="col" colspan="9" >Actions</th>
+                </tr>
+
+                <tr  {%  for u in users %}>
+                <tr>
+                    <td>  {{ u.id }}</td>
+                    <td> {{ u.email }}</td>
+                    <td>
+                        {% for role in u.roles %}
+                            {% if role =="ROLE_CLIENT"  %}
+                                Client
+                            {% elseif role=="ROLE_EMPLOYER" %}
+                                Employer
+                            {% elseif role=="ROLE_ADMIN" %}
+                                Administrateur
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+
+                    <td> {{ u.nomuser }}</td>
+                    <td> {{ u.cinuser }}</td>
+                    <td>  {{ u.ageuser }}</td>
+                    <td> {{u.numtel  }}</td>
+                    <td>  {{ u.sexe }}</td>
+                    <td>  {{u.abonnement }}</td>
+                    <td><a href="{{ path('update_user',{'id':u.id}) }}" class="btn btn-primary"title="Edit"><i class="fa fa-edit"></i></a></td>
+                    <td> <a href="{{ path('delet_user',{'id':u.id}) }}" class="btn btn-danger"title="Delete"><i class="fas fa-trash-alt"></i></a></td>
+                </tr{% endfor %}>
+
+                </table>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+{%endblock%}

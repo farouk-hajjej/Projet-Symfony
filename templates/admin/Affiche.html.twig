@@ -1,0 +1,69 @@
+{% extends 'admin/index.html.twig' %}
+{% block title %}Liste des utilisateurs{% endblock %}
+{% block body%}
+
+    <style>
+        .ellipsis {
+            width: 10%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col px-5">
+                <h1 class="text-success mb-3">Liste des Utilisateurs</h1>
+                <table class="table table-hover table-responsive table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Roles</th>
+                        <th scope="col">User_Name</th>
+                        <th scope="col" >Cin_User</th>
+                        <th scope="col">Age_User</th>
+                        <th scope="col">N° Tél</th>
+                        <th scope="col">Sexe</th>
+                        <th scope="col">Abonnement</th>
+                        <th scope="col" colspan="9" >Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr  {%  for u in users %}>
+
+                        <td>  {{ u.id }}</td>
+                        <td class="ellipsis"> {{ u.email }}</td>
+                        <td>
+                            {% for role in u.roles %}
+                                {% if role =="ROLE_CLIENT"  %}
+                                    Client
+                                {% elseif role=="ROLE_EMPLOYER" %}
+                                    Employer
+                                {% elseif role=="ROLE_ADMIN" %}
+                                    Administrateur
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+
+                        <td> {{ u.nomuser }}</td>
+                        <td> {{ u.cinuser }}</td>
+                        <td>  {{ u.ageuser }}</td>
+                        <td> {{u.numtel  }}</td>
+                        <td>  {{ u.sexe }}</td>
+                        <td>  {{u.abonnement }}</td>
+                        <td><a href="{{ path('update_user',{'id':u.id}) }}" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i> </a></td>
+                        <td> <a href="{{ path('delet_user',{'id':u.id}) }}" class="btn btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></a></td>
+                    </tr{% endfor %}>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{%endblock%}
+
+

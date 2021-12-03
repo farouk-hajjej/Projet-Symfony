@@ -1,0 +1,55 @@
+{% extends 'admin/index.html.twig' %}
+{% block title%} Liste des utilisateurs{% endblock %}
+
+{% block body %}
+{{ form_start(formU) }}
+
+
+   {{ form_row(formU.email) }}
+
+<button type="submit" class="btn btn-success">Rechercher</button>
+{{ form_end(formU) }}
+{% if user %}
+<table border="2">
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Roles</th>
+        <th>Ref_Admin</th>
+        <th>Cin_Client</th>
+        <th>Age_Client</th>
+        <th>Abonnement</th>
+        <th>Ref_Employer</th>
+        <th>Sexe</th>
+
+        </tr>
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+            {% for role in user.roles %}
+                {% if role =="ROLE_CLIENT"  %}
+                    Client
+                {% elseif role=="ROLE_EMPLOYER" %}
+                    Employer
+                {% elseif role=="ROLE_ADMIN" %}
+                    Administrateur
+                {% endif %}
+            {% endfor %}
+        </td>
+
+        <td>{{ user.getRefAdm() }}</td>
+        <td>{{ user.getCinClient() }}</td>
+        <td>{{ user.getAgeClient() }}</td>
+        <td>{{user.abonnement  }}</td>
+        <td>{{user.RefEmployer  }}</td>
+        <td>{{ user.sexe }}</td>
+
+    </tr {% endfor %}>
+</table>
+{% else %}
+    <p>Aucun Utilisateur</p>
+  {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,91 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block body%}
+
+
+            {% for message in app.flashes ('info') %}
+               <div class="alert alert-success">
+                   {{ message }}
+               </div>
+            {% endfor %}
+
+
+    <div style="margin: auto;
+    width: auto;
+    border: 3px solid palevioletred;
+    padding: 5px;">
+        <h1 style="color:green;font-family: 'Apple Color Emoji'">Ajouter Un Utilisateur</h1>
+        {# {{ form(userForm) }} #}
+        {{ form_start(userForm,{'attr': {'novalidate': 'novalidate'}}) }}
+        <table>
+            <tr>
+                <td>{{ form_label(userForm.email,"Votre Email") }}</td>
+                <td>{{ form_widget(userForm.email) }}</td>
+                <td>{{ form_errors(userForm.email) }}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form_label(userForm.plainPassword,"Password" )}}
+
+                </td>
+                <td>{{ form_widget(userForm.plainPassword) }}</td>
+                <td>{{ form_errors(userForm.plainPassword) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(userForm.roles) }}</td>
+                <td>{{ form_widget(userForm.roles) }}</td>
+                <td>{{ form_errors(userForm.roles) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(userForm.nomuser,"User Name") }}</td>
+                <td>{{ form_widget(userForm.nomuser) }}</td>
+                <td>{{ form_errors(userForm.nomuser) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(userForm.cinuser,"Cin User") }}</td>
+                <td>{{ form_widget(userForm.cinuser) }}</td>
+                <td>{{ form_errors(userForm.cinuser) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(userForm.ageuser,"Age User") }}</td>
+                <td>{{ form_widget(userForm.ageuser) }}</td>
+                <td>{{ form_errors(userForm.ageuser) }}</td>
+            </tr>
+
+            <tr>
+                <td> {{ form_label(userForm.numtel,"Numero Telephone") }}</td>
+                <td>{{ form_widget(userForm.numtel) }}</td>
+                <td>{{ form_errors(userForm.numtel) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(userForm.sexe) }}</td>
+                <td>{{ form_widget(userForm.sexe) }}</td>
+                <td>{{ form_errors(userForm.sexe) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(userForm.abonnement) }}</td>
+                <td>{{ form_widget(userForm.abonnement) }}</td>
+                <td>{{ form_errors(userForm.abonnement) }}</td>
+            </tr>
+
+
+
+            {#  {{ form_row(registrationForm.agreeTerms) }}#}
+
+            {# <button type="submit" class="btn">S'inscrire</button>#}
+            <table/>
+            {{ form_end(userForm) }}
+    </div>
+    <script>
+        function myFunction_toggle() {
+            var x = document.getElementById("test");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+
+{%endblock%}

@@ -1,0 +1,80 @@
+{% extends 'front/base-signup.html.twig' %}
+{% block body %}
+    <div>
+
+        {{ form_start(registrationForm,{'attr': {'novalidate': 'novalidate'}}) }}
+        <table>
+            <tr>
+                <td>{{ form_label(registrationForm.email,"Votre Email") }}</td>
+                <td>{{ form_widget(registrationForm.email) }}</td>
+                <td>{{ form_errors(registrationForm.email) }}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form_label(registrationForm.plainPassword,"Password" )}}
+
+                </td>
+                <td>{{ form_widget(registrationForm.plainPassword) }}</td>
+                <td>{{ form_errors(registrationForm.email) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(registrationForm.roles) }}</td>
+                <td>{{ form_widget(registrationForm.roles) }}</td>
+                <td>{{ form_errors(registrationForm.roles) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(registrationForm.nomuser,"User Name") }}</td>
+                <td>{{ form_widget(registrationForm.nomuser) }}</td>
+                <td>{{ form_errors(registrationForm.nomuser) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(registrationForm.cinuser,"Cin User") }}</td>
+                <td>{{ form_widget(registrationForm.cinuser) }}</td>
+                <td>{{ form_errors(registrationForm.cinuser) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(registrationForm.ageuser,"Age User") }}</td>
+                <td>{{ form_widget(registrationForm.ageuser) }}</td>
+                <td>{{ form_errors(registrationForm.ageuser) }}</td>
+            </tr>
+
+            <tr>
+                <td> {{ form_label(registrationForm.numtel,"Numero Telephone") }}</td>
+                <td>{{ form_widget(registrationForm.numtel) }}</td>
+                <td>{{ form_errors(registrationForm.numtel) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(registrationForm.sexe) }}</td>
+                <td>{{ form_widget(registrationForm.sexe) }}</td>
+                <td>{{ form_errors(registrationForm.sexe) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form_label(registrationForm.abonnement) }}</td>
+                <td>{{ form_widget(registrationForm.abonnement) }}</td>
+                <td>{{ form_errors(registrationForm.abonnement) }}</td>
+            </tr>
+
+            <tr>
+                <td> {{ form_label(registrationForm.captchaCode,"Are you a robot?") }}</td>
+                <td> {{ form_widget(registrationForm.captchaCode,{'attr': {'class': 'form-control'}})}}</td>
+                <td>{{ form_errors(registrationForm.captchaCode) }}</td>
+
+            </tr>
+
+
+
+            </table>
+
+            {{ form_end(registrationForm) }}
+    </div>
+    <script>
+        function myFunction_toggle() {
+            var x = document.getElementById("test");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}
