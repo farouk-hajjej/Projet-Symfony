@@ -75,15 +75,15 @@ class RegistrationFormType extends AbstractType
             /*->add('save',SubmitType::class,[
                 'label'=>'Registr'
             ])*/
-            ->add("captchaCode",CaptchaType::class,[
-                'captchaConfig' => 'ExampleCaptchaUserRegistration',
-                 'constraints' => [
-                    new ValidCaptcha([
-                        'message' => 'Invalid captcha,please try again',
-                    ]),
+           ->add("captchaCode",CaptchaType::class,[
+               'captchaConfig' => 'ExampleCaptchaUserRegistration',
+               'constraints' => [
+                   new ValidCaptcha([
+                       'message' => 'Invalid captcha,please try again',
+                   ]),
 
-                ],
-        ])
+               ],
+           ])
         ;
     }
 

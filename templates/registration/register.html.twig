@@ -54,7 +54,7 @@
                 <td>{{ form_errors(registrationForm.abonnement) }}</td>
             </tr>
 
-            <tr>
+           <tr>
                 <td> {{ form_label(registrationForm.captchaCode,"Are you a robot?") }}</td>
                 <td> {{ form_widget(registrationForm.captchaCode,{'attr': {'class': 'form-control'}})}}</td>
                 <td>{{ form_errors(registrationForm.captchaCode) }}</td>
@@ -63,7 +63,7 @@
 
 
 
-            </table>
+            <table/>
 
             {{ form_end(registrationForm) }}
     </div>
